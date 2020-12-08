@@ -105,7 +105,7 @@ class AdjustQuota extends Component{
           alert('用户调整额度范围不符合规范')
           return
         }
-        axios.post('/api/submitButton', { 'customerId' : "00001", 'cardNo': this.props.cardNum, 'newAmount': this.state.newAmount}).then(res => { // 切换页面前cheack修改金额是否遵循我们的规则
+        axios.post('/api/nextButton', { 'customerId' : "00001", 'cardNo': this.props.cardNum, 'newAmount': this.state.newAmount}).then(res => { // 切换页面前cheack修改金额是否遵循我们的规则
           if (res.data.code === '200') { // 遵循规则调用父级方法，方法详情在mainPage.js中有注释
             this.props.changeAmount(this.state.newAmount)
             this.props.pageChange(3)
