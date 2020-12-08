@@ -1,0 +1,21 @@
+.card_box_top{
+  font-size: 30px;
+}
+.cardSelectionText{
+  line-height: 55px;
+  background: #606060;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  padding-left: 25px;
+  margin-top: 35px;
+}
+.selectBox{
+  border: 1px solid black;
+  box-sizing: border-box;
+  border-top: none;
+  padding: 25px;
+}
+.money{
+  font-size: 22px;
+}

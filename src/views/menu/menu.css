@@ -1,0 +1,22 @@
+.menu_Box{
+  box-sizing: border-box;
+  padding-left: 70px;
+}
+.menu_top{
+  font-size: 30px;
+  padding-bottom: 15px;
+}
+.pageMenu ul li{
+  font-size: 18px;
+  border-top: 1px solid rgb(236, 236, 236);
+  padding-top: 22px;
+  padding-bottom: 22px;
+  cursor: pointer;
+  transition: .3s;
+}
+.pageMenu ul li:hover{
+  color: #409eff;
+}
+.menuSelectColor{
+  color: #409eff;
+}
