@@ -1,26 +1,26 @@
 .logoBox{
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 18px;
+  padding-bottom: 9px;
 }
 .logoBox img{
-  width: 280px;
-  margin-left: 60px;
+  width: 252px;
+  margin-left: 54px;
 }
 .headerMenu{
   box-sizing: border-box;
-  padding-left: 60px;
+  margin-left: 54px;
   border-bottom: 1px solid rgb(236, 236, 236);
 }
 .headerMenu ul{
   display: flex;
 }
 .headerMenu ul li{
-  padding-left: 30px;
-  height: 70px;
-  line-height: 70px;
-  padding-right: 30px;
+  padding-left: 27px;
+  height: 63px;
+  line-height: 63px;
+  padding-right: 27px;
   border-right: 1px solid rgb(236, 236, 236);
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
 }
 .headerMenu ul li:nth-last-of-type(1){

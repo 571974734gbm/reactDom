@@ -43,7 +43,7 @@ class MainPage extends Component{
   render(){
     return(
       <div>
-        { this.state.showIndex === 1 ? <SelectCard pageChange={this.pageChange} getSelectCardNum={this.getSelectCardNum} /> : null }
+        { this.state.showIndex === 1 ? <SelectCard cardNum={this.state.cardNum} pageChange={this.pageChange} getSelectCardNum={this.getSelectCardNum} /> : null }
         { this.state.showIndex === 2 ? <AdjustQuota cardNum={this.state.cardNum} pageChange={this.pageChange} changeAmount={this.changeAmount} /> : null }
         { this.state.showIndex === 3 ? <ConfirmPage newAmount={this.state.newAmount} cardNum={this.state.cardNum} pageChange={this.pageChange} changeAmount={this.changeAmount} /> : null }
         { this.state.showIndex === 4 ? <ApplicationSuccess newAmount={this.state.newAmount} cardNum={this.state.cardNum} pageChange={this.pageChange} /> : null }

@@ -1,14 +1,14 @@
 .card_box_top{
-  font-size: 30px;
+  font-size: 27px;
 }
 .cardSelectionText{
-  line-height: 55px;
+  line-height: 50px;
   background: #606060;
   color: white;
   font-weight: bold;
-  font-size: 20px;
-  padding-left: 25px;
-  margin-top: 35px;
+  font-size: 18px;
+  padding-left: 22px;
+  margin-top: 30px;
 }
 .selectBox{
   border: 1px solid black;
@@ -17,16 +17,16 @@
   padding: 25px;
 }
 .selectCard{
-  font-size: 20px;
+  font-size: 18px;
 }
 .select{
-  width: 300px;
-  padding-left: 10px;
+  width: 270px;
+  padding-left: 9px;
   background: #F8F8F7;
   border: 1px solid #E8E8E8;
-  margin-top: 15px;
-  font-size: 18px;
-  line-height: 45px;
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 38px;
   border-radius: 4px;
   cursor: pointer;
   position: relative;

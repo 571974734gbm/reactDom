@@ -17,6 +17,11 @@ class SelectCard extends Component{
    * 生命周期初始化后调用
    */
   componentDidMount() {
+    if (this.props.cardNum) {
+      this.setState({
+        selectValue: this.props.cardNum
+      })
+    }
     axios.post('/api/selectCardList', {'customerId': '00001'}).then(res => { // axios请求信用卡数据
       this.setState({
         selectList: res.data

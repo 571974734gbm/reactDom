@@ -1,14 +1,14 @@
 .card_box_top{
-  font-size: 30px;
+  font-size: 27px;
 }
 .cardSelectionText{
-  line-height: 55px;
+  line-height: 50px;
   background: #606060;
   color: white;
   font-weight: bold;
-  font-size: 20px;
-  padding-left: 25px;
-  margin-top: 35px;
+  font-size: 18px;
+  padding-left: 22px;
+  margin-top: 30px;
 }
 .selectBox{
   border: 1px solid black;
@@ -17,5 +17,5 @@
   padding: 25px;
 }
 .money{
-  font-size: 22px;
+  font-size: 20px;
 }

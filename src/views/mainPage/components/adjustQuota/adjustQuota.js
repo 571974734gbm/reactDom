@@ -61,9 +61,11 @@ class AdjustQuota extends Component{
    * 监听input改变 e为改变的input的dom
    */
   inputChange = (e) => {
-    this.setState({
-      newAmount: e.target.value
-    })
+    if (!isNaN(e.target.value)) {
+      this.setState({
+        newAmount: e.target.value
+      })
+    }
   }
 
   inputChange1 = (e) => {
@@ -135,7 +137,7 @@ class AdjustQuota extends Component{
           <div>
             <span>New Credit Limit</span>:MYR
             <div className="inputBox">
-              <input maxLength="11" className={this.state.inputHide === true ? 'optionClass' : null} onBlur={this.inputOnBlur} onFocus={this.inputOnFocus} value={this.state.newAmount} onChange={this.inputChange} type="number"></input>
+              <input maxLength="11" className={this.state.inputHide === true ? 'optionClass' : null} onBlur={this.inputOnBlur} onFocus={this.inputOnFocus} value={this.state.newAmount} onChange={this.inputChange} type="text"></input>
               <input className value={this.state.newAmount1} onChange={this.inputChange1}></input>
             </div>
           </div>

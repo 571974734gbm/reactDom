@@ -2,17 +2,22 @@
   padding: 0;
   margin: 0;
 }
+.allPageBox{
+  width: 1200px;
+  margin: auto;
+  /* -webkit-transform:scale(0.9); */
+}
 .allPageBox_bottom{
   display: flex;
   justify-content: flex-start;
   margin-top: 40px;
 }
 .allPageBox_bottomLeft{
-  width: 15%;
+  width: 26%;
 }
 .allPageBox_bottomRight{
-  width: 55%;
-  margin-left: 1%;
+  width: 72%;
+  margin-left: 2%;
 }
 ul li{
   list-style: none;
@@ -23,8 +28,8 @@ ul li{
   margin-top: 25px;
 }
 .bottomButton button{
-  width: 120px;
-  height: 38px;
+  width: 112px;
+  height: 34px;
   border: none;
   background: #757784;
   border-radius: 4px;
