@@ -23,8 +23,14 @@ class SelectCard extends Component{
       })
     }
     axios.post('/api/selectCardList', {'customerId': '00001'}).then(res => { // axios请求信用卡数据
+      let arr = []
+      res.data.cardList.forEach(item => {
+        if (item.holderAttributeString) {
+          arr.push(item)
+        }
+      });
       this.setState({
-        selectList: res.data
+        selectList: arr
       })
     })
     document.onclick = () => { // document点击监听隐藏下拉框
@@ -79,7 +85,7 @@ class SelectCard extends Component{
               <div className="optionBox">
                 {this.state.selectShow ? <ul>
                   {this.state.selectList.map((item, index) => {
-                    return <li className={this.state.selectValue === item ? "selectColor" : null} onClick={(e) => {e.stopPropagation(); this.handleChange(item)}} key={index}>{item}</li>
+                    return <li className={this.state.selectValue === item.cardNo ? "selectColor" : null} onClick={(e) => {e.stopPropagation(); this.handleChange(item.cardNo)}} key={index}>{item.cardNo}</li>
                   })}
                 </ul> : null}
               </div>

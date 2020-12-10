@@ -38,6 +38,18 @@
   position: relative;
   margin-top: 15px;
 }
+.errBorder{
+  border-color: rgb(250, 23, 23) !important;
+}
+.errBox{
+  color: rgb(250, 23, 23);
+  width: 300px;
+  height: 40px;
+  position: absolute;
+  top: 40px;
+  left: 15px;
+  font-size: 12px !important;
+}
 .inputBox input:nth-of-type(1){
   position: absolute;
   left: 0px;

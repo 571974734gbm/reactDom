@@ -11,6 +11,8 @@ class AdjustQuota extends Component{
       newAmount1: '',
       moneyText: '',
       inputHide: true,
+      nowAmount: '',
+      errText: ''
     };
   }
 
@@ -20,6 +22,7 @@ class AdjustQuota extends Component{
   componentDidMount() {
     axios.post('/api/selectCardAmount', { 'cardNo': this.props.cardNum}).then(res => { // axios请求信用卡信息(修改最大金额等)
       this.setState({
+        nowAmount: res.data.amount + '',
         moneyText: this.toMoney(res.data.amount)
       })
     })
@@ -89,7 +92,8 @@ class AdjustQuota extends Component{
    */
   inputOnFocus = () => {
     this.setState({
-      inputHide: false
+      inputHide: false,
+      errText: ''
     })
   }
 
@@ -99,20 +103,41 @@ class AdjustQuota extends Component{
   next = () => {
     if (this.state.checkBoxStatic) { // 判断复选框是否被选中
       axios.post('/api/selectCardMaxAmount', { 'cardNo': this.props.cardNum }).then(res => {
-        if (Number(this.state.newAmount) > res.data.cardMaxAmount) {
-          alert('用户额度超出最大值')
+        if (!this.state.newAmount) {
+          this.setState({
+            errText: '调整额度不能为空'
+          })
           return
         }
-        if (Number(this.state.newAmount) % res.data.amountInterval !== 0) {
-          alert('用户调整额度范围不符合规范')
+        if (this.state.newAmount === this.state.nowAmount) {
+          this.setState({
+            errText: '调整额度与当前额度相等'
+          })
+          return
+        }
+        if (Number(this.state.newAmount) > res.data.sysparam[0].max) {
+          this.setState({
+            errText: '用户额度超出最大值'
+          })
+          return
+        }
+        if (Number(this.state.newAmount) %  res.data.sysparam[0].interval !== 0) {
+          this.setState({
+            errText: '用户调整额度范围不符合规范'
+          })
           return
         }
         axios.post('/api/nextButton', { 'customerId' : "00001", 'cardNo': this.props.cardNum, 'newAmount': this.state.newAmount}).then(res => { // 切换页面前cheack修改金额是否遵循我们的规则
           if (res.data.code === '200') { // 遵循规则调用父级方法，方法详情在mainPage.js中有注释
             this.props.changeAmount(this.state.newAmount)
             this.props.pageChange(3)
+            this.setState({
+              errText: ''
+            })
           } else { // 不遵循规则弹出message
-            alert(res.data.msg)
+            this.setState({
+              errText: res.data.msg
+            })
           }
         })
       })
@@ -138,7 +163,8 @@ class AdjustQuota extends Component{
             <span>New Credit Limit</span>:MYR
             <div className="inputBox">
               <input maxLength="11" className={this.state.inputHide === true ? 'optionClass' : null} onBlur={this.inputOnBlur} onFocus={this.inputOnFocus} value={this.state.newAmount} onChange={this.inputChange} type="text"></input>
-              <input className value={this.state.newAmount1} onChange={this.inputChange1}></input>
+              <input className={this.state.errText ? 'errBorder' : ''} value={this.state.newAmount1} onChange={this.inputChange1}></input>
+              {this.state.errText ? <div class="errBox">{this.state.errText}</div> : null}
             </div>
           </div>
           <div>Note:Amount increased is combined limit</div>
