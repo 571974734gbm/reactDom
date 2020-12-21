@@ -7,12 +7,21 @@ class ConfirmPage extends Component{
    * next点击
    */
   next = () => {
-    axios.post('/api/submitButton', { 'customerId' : "00001", 'cardNo': this.props.cardNum, 'newAmount': this.props.newAmount}).then(res => { // 确认提交再chaeack一遍是是否遵循我们的规则
-      if (res.data.code === '200') { // 遵循规则调用父级方法，方法详情在mainPage.js中有注释
-        this.props.changeAmount(this.props.newAmount)
-        this.props.pageChange(4)
-      } else {
-        alert(res.data.msg)
+    console.log('ss')
+    axios.post('/api/readRedis', {'cardNo': this.props.cardNum, 'newAmount': this.props.newAmount}).then(res => {
+      if (res.data.code === '200') {
+        if (res.data.data === this.props.newAmount) {
+          axios.post('/api/submitButton', { 'customerId' : "00001", 'cardNo': this.props.cardNum, 'newAmount': this.props.newAmount}).then(res => { // 确认提交再chaeack一遍是是否遵循我们的规则
+            if (res.data.code === '200') { // 遵循规则调用父级方法，方法详情在mainPage.js中有注释
+              this.props.changeAmount(this.props.newAmount)
+              this.props.pageChange(4)
+            } else {
+              alert(res.data.msg)
+            }
+          })
+        } else {
+          alert('确认金额与提交金额不一致')
+        }
       }
     })
   }
